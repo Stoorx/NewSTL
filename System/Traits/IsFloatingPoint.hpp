@@ -5,8 +5,7 @@
 #pragma once
 
 #include "./IsSame.hpp"
-#include "./RemoveConst.hpp"
-#include "./RemoveVolatile.hpp"
+#include "./RemoveQualifiers.hpp"
 #include "./AnyOf.hpp"
 
 namespace System::Traits {
@@ -21,8 +20,6 @@ namespace System::Traits {
   
   template <typename Type>
   static constexpr bool IsFloatingPoint = Impl::IsFloatingPoint<
-      RemoveConst<
-          RemoveVolatile<Type>
-      >
+      RemoveQualifiers<Type>
   >;
 }

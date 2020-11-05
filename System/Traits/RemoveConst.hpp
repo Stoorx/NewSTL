@@ -20,6 +20,3 @@ namespace System::Traits {
   template <typename Type>
   using RemoveConst = typename Impl::RemoveConst<Type>::type;
 }
-
-
-
