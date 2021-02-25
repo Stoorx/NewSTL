@@ -7,7 +7,7 @@
 namespace System::Traits {
   namespace Impl {
     template <typename Type>
-    struct DecltypeProtector {
+    struct DeclvalProtector {
         static constexpr bool value = false;
     };
     
@@ -17,7 +17,7 @@ namespace System::Traits {
   
   template <typename Type>
   auto declval() noexcept -> decltype(Impl::declval<Type>()) {
-      static_assert(Impl::DecltypeProtector<Type>::value, "declval() must not be used in evaluated context!");
+      static_assert(Impl::DeclvalProtector<Type>::value, "declval() must not be used in evaluated context!");
       return Impl::declval<Type>();
   }
 }
